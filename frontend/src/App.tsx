@@ -1,9 +1,12 @@
-export default function App() {
+import { AuthProvider } from "./context/AuthContext";
+import AppRoutes from "./routes/AppRoutes";
+
+function App() {
   return (
-    <div className="min-h-screen bg-red-500 flex items-center justify-center">
-      <h1 className="text-white text-4xl font-bold">
-        Tailwind Working 🚀
-      </h1>
-    </div>
+    <AuthProvider>
+      <AppRoutes />
+    </AuthProvider>
   );
 }
+
+export default App;
