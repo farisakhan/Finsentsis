@@ -1,9 +1,43 @@
-export default function App() {
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Auth/Login";
+import Signup from "./pages/Auth/Signup";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
+
+// Temporary dashboard components (replace with real ones)
+const AdminDashboard = () => <div>Admin Dashboard</div>;
+const EmployeeDashboard = () => <div>Employee Dashboard</div>;
+
+function App() {
   return (
-    <div className="min-h-screen bg-red-500 flex items-center justify-center">
-      <h1 className="text-white text-4xl font-bold">
-        Tailwind Working 🚀
-      </h1>
-    </div>
+    <Router>
+      <Routes>
+        {/* Public Routes */}
+        <Route path="/" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
+
+        {/* Protected Routes */}
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/employee/dashboard"
+          element={
+            <ProtectedRoute>
+              <EmployeeDashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
+
+export default App;
