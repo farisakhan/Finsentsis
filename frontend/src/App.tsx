@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
-import ResetPassword from "./pages/Auth/ResetPassword";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 // Temporary dashboard components (replace with real ones)
@@ -15,7 +14,6 @@ function App() {
         {/* Public Routes */}
         <Route path="/" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
 
         {/* Protected Routes */}
         <Route
